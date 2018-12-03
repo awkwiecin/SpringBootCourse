@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() {
+        User user = new User();
+        user.setFirstName("Andrzej");
         return "Hello End User";
     }
 }
