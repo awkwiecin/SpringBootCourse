@@ -27,14 +27,14 @@ public class CourseController {
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "buy/(id)", method = RequestMethod.POST)
+    @RequestMapping(value = "/buy/{id}", method = RequestMethod.POST)
     public Course buyCourse(@PathVariable(value = "id") Long id) {
         System.out.println("buyCourse");
         return getCourse(id);
     }
 
 
-    @RequestMapping(value = "buy2", method = RequestMethod.POST)
+    @RequestMapping(value = "/buy2", method = RequestMethod.POST)
     public Course buyCourse2(@RequestParam(value = "id") Long id) {
         System.out.println("buyCourse2");
         return getCourse(id);
