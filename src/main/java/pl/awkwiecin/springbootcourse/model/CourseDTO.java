@@ -1,9 +1,9 @@
-package pl.awkwiecin.springbootcourse;
+package pl.awkwiecin.springbootcourse.model;
 
 import lombok.Data;
 
 @Data
-public class Course {
+public class CourseDTO {
 
     private Long id;
     private String name;

@@ -1,4 +1,4 @@
-package pl.awkwiecin.springbootcourse;
+package pl.awkwiecin.springbootcourse.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

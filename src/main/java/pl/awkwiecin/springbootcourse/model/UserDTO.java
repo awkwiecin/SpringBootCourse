@@ -1,9 +1,9 @@
-package pl.awkwiecin.springbootcourse;
+package pl.awkwiecin.springbootcourse.model;
 
 import lombok.Data;
 
 @Data       //lombok -- automatickly adds getters setters and so on
-public class User {
+public class UserDTO {
     private String firstName;
     private String lastName;
     private String email;
