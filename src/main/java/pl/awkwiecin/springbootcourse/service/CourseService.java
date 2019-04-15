@@ -1,11 +1,13 @@
 package pl.awkwiecin.springbootcourse.service;
 
+import pl.awkwiecin.springbootcourse.model.CourseDTO;
+import pl.awkwiecin.springbootcourse.persistence.model.Course;
+import pl.awkwiecin.springbootcourse.persistence.repository.CourseRepo;
+
 import java.util.List;
 
-public interface CourseService<T> extends BaseService {
+public interface CourseService extends BaseService<Course, Long, CourseRepo> {
 
-    public List <T> getBought();
-
-    public T buyCourse(int id);
+    CourseDTO getCourseDtoById(Long id);
 
 }

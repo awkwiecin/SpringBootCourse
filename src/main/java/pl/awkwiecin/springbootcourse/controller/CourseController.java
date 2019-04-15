@@ -1,10 +1,15 @@
 package pl.awkwiecin.springbootcourse.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.awkwiecin.springbootcourse.model.CourseDTO;
 import pl.awkwiecin.springbootcourse.exception.WrongIdException;
+import pl.awkwiecin.springbootcourse.persistence.model.Course;
+import pl.awkwiecin.springbootcourse.persistence.repository.CourseRepo;
+import pl.awkwiecin.springbootcourse.service.CourseService;
+import pl.awkwiecin.springbootcourse.service.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,9 @@ import java.util.List;
 public class CourseController {
 
     private List<CourseDTO> cours = new ArrayList<>();
+
+    @Autowired
+    CourseService courseService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO) {
@@ -30,10 +38,13 @@ public class CourseController {
         return new ResponseEntity<>(cours, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/buy/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id) {
         System.out.println("buyCourse");
-        return getCourse(id);
+        Course course = new Course();
+        course.setName("SBC");
+        courseService.save(course);
+        return null;
     }
 
 
