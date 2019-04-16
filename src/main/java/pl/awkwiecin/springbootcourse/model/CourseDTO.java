@@ -7,8 +7,7 @@ import lombok.Data;
 //@AllArgsConstructor //konstruktor
 public class CourseDTO {
 
-    private Long id;
     private String name;
-    private int LengthInSecond;
+    private Long id;
 
 }

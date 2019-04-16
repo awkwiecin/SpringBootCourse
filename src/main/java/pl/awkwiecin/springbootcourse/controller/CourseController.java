@@ -25,25 +25,25 @@ public class CourseController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO) {
-        if (courseDTO.getId()==null || courseDTO.getId()<0)
-            throw new WrongIdException("courseDTO variable has a null id or negative id!!!");
-        cours.add(courseDTO);
-        System.out.println(courseDTO.getName());
-        System.out.println(courseDTO.getLengthInSecond());
-        return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
+        if (courseDTO.getId() != null)
+            throw new WrongIdException("Tworzony kurs nie powinien posiadać ID.");
+        System.out.println("/course/create " + courseDTO.getName());
+        CourseDTO dto = courseService.createCourse(courseDTO);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/available", method = RequestMethod.GET)
     public ResponseEntity<List<CourseDTO>> getAvailableCourse() {
-        return new ResponseEntity<>(cours, HttpStatus.OK);
+
+        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id) {
         System.out.println("buyCourse");
-        Course course = new Course();
+       /* Course course = new Course();
         course.setName("SBC");
-        courseService.save(course);
+        courseService.save(course);*/
         return null;
     }
 
